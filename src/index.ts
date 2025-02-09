@@ -51,7 +51,7 @@ export class AnyFrame {
    * Utilities
    * Basic utility functions to aid development
    */
-  addTabs(str: string, size: number = 2, fixedTabs: boolean = false): string {
+  private addTabs(str: string, size: number = 2, fixedTabs: boolean = false): string {
     return str
       .split('\n')
       .filter((line) => line.trim() !== '')
@@ -59,15 +59,15 @@ export class AnyFrame {
       .join('\n')
   }
 
-  createTenoxUI(inputConfig: Partial<Config> = {}): TenoxUI {
+  private createTenoxUI(inputConfig: Partial<Config> = {}): TenoxUI {
     return new TenoxUI(merge(this.config, inputConfig))
   }
 
-  getConfig() {
+  public getConfig() {
     return this.config
   }
 
-  getLayerConfig() {
+  public getLayerConfig() {
     return {
       base: this.baseConfig,
       theme: this.themeConfig,
@@ -80,7 +80,7 @@ export class AnyFrame {
    * Layers
    * Methods for managing CSS layers for better style output organization
    */
-  addLayer(layerName: string): this {
+  public addLayer(layerName: string): this {
     if (!this.layers.has(layerName)) {
       this.layers.set(layerName, '')
       if (!this.layerOrder.includes(layerName)) {
@@ -90,7 +90,7 @@ export class AnyFrame {
     return this
   }
 
-  removeLayer(layerName: string): this {
+  public removeLayer(layerName: string): this {
     if (layerName !== 'base' && layerName !== 'theme') {
       this.layers.delete(layerName)
       this.layerOrder = this.layerOrder.filter((layer) => layer !== layerName)
@@ -98,7 +98,7 @@ export class AnyFrame {
     return this
   }
 
-  setLayerOrder(order: string[]): this {
+  public setLayerOrder(order: string[]): this {
     const existingLayers = Array.from(this.layers.keys())
     const missingLayers = existingLayers.filter((layer) => !order.includes(layer))
     this.layerOrder = [...order, ...missingLayers]
@@ -108,7 +108,7 @@ export class AnyFrame {
   /**
    * Main Styles Computation
    */
-  addStyle(layer: string = 'base', config: Partial<Config> = {}): this {
+  public addStyle(layer: string = 'base', config: Partial<Config> = {}): this {
     if (!this.layers.has(layer)) {
       this.addLayer(layer)
     }
@@ -121,7 +121,7 @@ export class AnyFrame {
     return this
   }
 
-  createStyles(finalUtilities: string = ''): string {
+  public createStyles(finalUtilities: string = ''): string {
     const existingLayers = Array.from(this.layers.keys())
     const orderedLayers = this.layerOrder.filter((layer) => existingLayers.includes(layer))
 
@@ -149,7 +149,7 @@ export class AnyFrame {
     return styles
   }
 
-  create(classNames: string[]) {
+  public create(classNames: string[]) {
     const ui = new TenoxUI(this.mainConfig).processClassNames(classNames)
     const stylesheet = this.createStyles(ui.generateStylesheet())
 
