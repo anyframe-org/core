@@ -42,6 +42,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@nousantx/someutils@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@nousantx/someutils/-/someutils-0.6.1.tgz#dec7d3bfbdf644ad6793c3255ca9a8a8347cb5f5"
+  integrity sha512-Esbr13Jb8YmBVMbL+fcqWpmLDf6wFCOVBwnOwIu/0vvB42MzSOeRgoX2j08t04ZksHeiydzQDTMqQZBA1l4eeg==
+
 "@rollup/plugin-commonjs@^28.0.2":
   version "28.0.2"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-commonjs/-/plugin-commonjs-28.0.2.tgz#193d7a86470f112b56927c1d821ee45951a819ea"
@@ -186,6 +191,16 @@
   version "4.34.6"
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.34.6.tgz#f3d03ce2d82723eb089188ea1494a719b09e1561"
   integrity sha512-0PVwmgzZ8+TZ9oGBmdZoQVXflbvuwzN/HRclujpl4N/q3i+y0lqLw8n1bXA8ru3sApDjlmONaNAuYr38y1Kr9w==
+
+"@tenoxui/static@0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@tenoxui/static/-/static-0.3.2.tgz#f95bdcdf3e1f0cdd1738c67c063fc43c29d21163"
+  integrity sha512-KaGzPA2RuYr4USyN+KxKTdTdwlL/ne08eBur3rAlU41CZ6MRuq2SHznjGo/sH966Dp27zean+3yDTw+zTWvHXw==
+
+"@tenoxui/types@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@tenoxui/types/-/types-0.1.2.tgz#d241031158a115b9edbd62fa9c603d6f592bd06f"
+  integrity sha512-Vvmcj5qN9qqEnGjBx3S3fQD3yty2RdMG2qtssQywBdEbX9ast1nuHCe60ML4q3+40Dfz2LMRh4Ny7vzGta5xPA==
 
 "@types/estree@*", "@types/estree@1.0.6", "@types/estree@^1.0.0":
   version "1.0.6"
