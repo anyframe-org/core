@@ -1,0 +1,42 @@
+{
+  "name": "@anyframe/core",
+  "version": "0.1.0",
+  "description": "AnyFrame core module",
+  "author": "AnyFrame",
+  "license": "MIT",
+  "homepage": "https://github.com/anyframe-org/core#readme",
+  "keywords": [
+    "keywords"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anyframe-org/core.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anyframe-org/core/issues"
+  },
+  "files": [
+    "index.js",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "types": "index.d.ts",
+  "main": "index.js",
+  "module": "index.esm.js",
+  "style": "index.css",
+  "scripts": {
+    "start": "echo 'hello world'"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/node": "^22.13.1",
+    "rollup": "^4.34.6",
+    "tslib": "^2.8.1",
+    "typescript": "^5.7.3"
+  }
+}
