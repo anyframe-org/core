@@ -1,10 +1,11 @@
-import { Config, TenoxUIConfig } from './types'
+import { Config, TenoxUIConfig, type StyleValue } from './types'
 import { TenoxUI } from '@tenoxui/static'
 import { merge } from '@nousantx/someutils'
 
 export class AnyFrame {
-  private mainConfig: TenoxUIConfig
   private config: Pick<TenoxUIConfig, 'property' | 'values' | 'classes' | 'aliases' | 'breakpoints'>
+  private reserveClass: string[]
+  private apply: Record<string, StyleValue>
   private tabSize: number
   private useLayer: boolean
   private layerOrder: string[]
@@ -29,8 +30,9 @@ export class AnyFrame {
     components = {},
     utilities = {}
   }: Config) {
-    this.mainConfig = { property, values, classes, aliases, breakpoints, apply, reserveClass }
     this.config = { property, values, classes, aliases, breakpoints }
+    this.reserveClass = reserveClass
+    this.apply = apply
     this.tabSize = tabSize
     this.useLayer = showLayerModifier
     this.layerOrder = layerOrder
@@ -150,7 +152,11 @@ export class AnyFrame {
   }
 
   public create(classNames: string[]) {
-    const ui = new TenoxUI(this.mainConfig).processClassNames(classNames)
+    const ui = new TenoxUI({
+      ...this.config,
+      apply: this.apply,
+      reserveClass: this.reserveClass
+    }).processClassNames(classNames)
     const stylesheet = this.createStyles(ui.generateStylesheet())
 
     return stylesheet
@@ -162,4 +168,5 @@ export function defineConfig(config: Config): Config {
 }
 
 export * from './types'
-export default { AnyFrame, defineConfig }
+export { TenoxUI } from '@tenoxui/static'
+export default { TenoxUI, AnyFrame, defineConfig }
