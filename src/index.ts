@@ -29,7 +29,7 @@ export class AnyFrame {
     theme = {},
     components = {},
     utilities = {}
-  }: Config) {
+  }: Config = {}) {
     this.config = { property, values, classes, aliases, breakpoints }
     this.reserveClass = reserveClass
     this.apply = apply
@@ -156,10 +156,12 @@ export class AnyFrame {
       ...this.config,
       apply: this.apply,
       reserveClass: this.reserveClass
-    }).processClassNames(classNames)
-    const stylesheet = this.createStyles(ui.generateStylesheet())
+    })
 
-    return stylesheet
+    if (classNames) ui.processClassNames(classNames)
+
+    const stylesheet = this.createStyles(ui.generateStylesheet())
+    return stylesheet.replace(/\n$/, '')
   }
 }
 
