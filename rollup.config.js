@@ -10,8 +10,8 @@ const sourcemap = true
 const fileName = 'index'
 const name = '__anyframe_core__'
 const banner = `/*!
- * ${pkg.name} v${pkg.version} | ${pkg.license} License
- * Copyright (c) 2025-present ${pkg.author}
+ * ${pkg.name} v${pkg.version}
+ * Licensed under the ${pkg.license} License
  */`
 
 export default {
