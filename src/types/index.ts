@@ -17,8 +17,7 @@ export interface Config extends TenoxUIConfig {
   tabSize?: number
   showLayerModifier?: boolean
   layerOrder?: string[]
-  base?: Partial<TenoxUIConfig>
   theme?: Partial<TenoxUIConfig>
+  base?: Partial<TenoxUIConfig>
   components?: Partial<TenoxUIConfig>
-  utilities?: Partial<TenoxUIConfig>
 }

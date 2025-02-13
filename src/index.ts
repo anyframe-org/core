@@ -9,8 +9,8 @@ export class AnyFrame {
   private tabSize: number
   private useLayer: boolean
   private layerOrder: string[]
-  private baseConfig: TenoxUIConfig
   private themeConfig: TenoxUIConfig
+  private baseConfig: TenoxUIConfig
   private componentsConfig: TenoxUIConfig
   private layers: Map<string, string>
   constructor({
@@ -23,9 +23,9 @@ export class AnyFrame {
     reserveClass = [],
     tabSize = 2,
     showLayerModifier = false,
-    layerOrder = ['base', 'theme', 'components', 'utilities'],
-    base = {},
+    layerOrder = ['theme', 'base', 'components', 'utilities'],
     theme = {},
+    base = {},
     components = {}
   }: Config = {}) {
     this.config = { property, values, classes, aliases, breakpoints }
@@ -34,13 +34,13 @@ export class AnyFrame {
     this.tabSize = tabSize
     this.useLayer = showLayerModifier
     this.layerOrder = layerOrder
-    this.baseConfig = base
     this.themeConfig = theme
+    this.baseConfig = base
     this.componentsConfig = components
 
     this.layers = new Map<string, string>([
-      ['base', ''],
       ['theme', ''],
+      ['base', ''],
       ['components', ''],
       ['utilities', '']
     ])
