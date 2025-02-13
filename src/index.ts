@@ -12,7 +12,6 @@ export class AnyFrame {
   private baseConfig: TenoxUIConfig
   private themeConfig: TenoxUIConfig
   private componentsConfig: TenoxUIConfig
-  private utilitiesConfig: TenoxUIConfig
   private layers: Map<string, string>
   constructor({
     property = {},
@@ -27,9 +26,8 @@ export class AnyFrame {
     layerOrder = ['base', 'theme', 'components', 'utilities'],
     base = {},
     theme = {},
-    components = {},
-    utilities = {}
-  }: Config) {
+    components = {}
+  }: Config = {}) {
     this.config = { property, values, classes, aliases, breakpoints }
     this.reserveClass = reserveClass
     this.apply = apply
@@ -39,7 +37,6 @@ export class AnyFrame {
     this.baseConfig = base
     this.themeConfig = theme
     this.componentsConfig = components
-    this.utilitiesConfig = utilities
 
     this.layers = new Map<string, string>([
       ['base', ''],
@@ -73,8 +70,7 @@ export class AnyFrame {
     return {
       base: this.baseConfig,
       theme: this.themeConfig,
-      components: this.componentsConfig,
-      utilities: this.utilitiesConfig
+      components: this.componentsConfig
     }
   }
 
@@ -132,7 +128,10 @@ export class AnyFrame {
 
     orderedLayers.forEach((layer) => {
       // If the layer's configuration is not empty, generate its styles
-      if (Object.entries((this as any)[`${layer}Config`]).length > 0)
+      if (
+        (this as any)[`${layer}Config`] &&
+        Object.entries((this as any)[`${layer}Config`]).length > 0
+      )
         this.addStyle(layer, (this as any)[`${layer}Config`])
 
       let layerStyles = this.layers.get(layer) || ''
@@ -156,10 +155,12 @@ export class AnyFrame {
       ...this.config,
       apply: this.apply,
       reserveClass: this.reserveClass
-    }).processClassNames(classNames)
-    const stylesheet = this.createStyles(ui.generateStylesheet())
+    })
 
-    return stylesheet
+    if (classNames) ui.processClassNames(classNames)
+
+    const stylesheet = this.createStyles(ui.generateStylesheet())
+    return stylesheet.replace(/\n$/, '')
   }
 }
 
