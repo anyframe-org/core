@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>AnyFrame rebuild test</title>
+    <script src="./dist/index.iife.js"></script>
+  </head>
+  <body>
+    <div
+      class="box bg-[0_255_0] [display]-flex [justify-content,align-items]-center [border-radius]-1rem"
+    >
+      TenoxUI App
+    </div>
+    <script>
+      const { AnyFrame } = __anyframe_core__
+      const ui = new AnyFrame({
+        property: {
+          // bg: 'background'
+        },
+        classes: {
+          '--bg-opacity': {
+            bg: '{1}% || 1'
+          },
+          background: {
+            bg: 'rgb({0} / var(--bg-opacity)) || red'
+          }
+        },
+        apply: {
+          '.box': '[width,height]-200px'
+        }
+      })
+
+      const allClasses2 = [...document.querySelectorAll('*')].flatMap((el) => {
+        let classes
+        return (
+          ((classes = el.getAttribute('class')) == null
+            ? void 0
+            : classes.split(/\s+/).filter(Boolean)) || []
+        )
+      })
+
+      console.log(allClasses2)
+
+      const stylesheet = ui.create(allClasses2)
+      console.log(stylesheet)
+      const styleTag = document.createElement('style')
+      styleTag.textContent = stylesheet
+      document.head.appendChild(styleTag)
+      console.log(document.head.innerHTML)
+    </script>
+  </body>
+</html>

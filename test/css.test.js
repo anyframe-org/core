@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach } from 'saintest'
-import { AnyFrame } from '../dist/index.esm.js'
+import { AnyFrame } from '../dist/index.es.js'
 
 describe('AnyFrame', () => {
   describe('Configuration', () => {
@@ -86,9 +86,6 @@ describe('AnyFrame', () => {
     })
 
     it('should parse style correctly', () => {
-      console.log(ui.create(['bg-red']))
-      
-      
       expect(ui.create(['bg-primary'])).toContain('.bg-primary { background: #ccf654 }')
     })
 
@@ -99,7 +96,7 @@ describe('AnyFrame', () => {
         }
       })
       const styles = ui.create(['bg-red'])
-      expect(styles).toContain('@layer base, theme, components, utilities;')
+      expect(styles).toContain('@layer theme, base, components, utilities;')
       expect(styles).toContain('body { background: #0000ff }')
     })
 
