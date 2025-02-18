@@ -16,8 +16,8 @@ importers:
         specifier: ^0.6.1
         version: 0.6.1
       '@tenoxui/static':
-        specifier: ^0.3.3
-        version: 0.3.3
+        specifier: ^0.3.4
+        version: 0.3.4
       saintest:
         specifier: ^0.2.0
         version: 0.2.0
@@ -294,8 +294,8 @@ packages:
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
 
-  '@tenoxui/static@0.3.3':
-    resolution: {integrity: sha512-Fdjc71vUq6YL9LbFg4AGgfovIf9Uk1yQE4ENjeTjN0cmwH/kbMAThqy8RVrQFNgjahnC+XL6dgWxQ+Ze+hEb6w==}
+  '@tenoxui/static@0.3.4':
+    resolution: {integrity: sha512-LUd3g7K5M1KWEr4Sr/HgTaNHbb7QvEmGOw9crwcr5xUcWiz+KLZW4scWLVe1R1L6i+Zxg3h81kfUbaTQfZcKkA==}
 
   '@tenoxui/types@0.1.2':
     resolution: {integrity: sha512-Vvmcj5qN9qqEnGjBx3S3fQD3yty2RdMG2qtssQywBdEbX9ast1nuHCe60ML4q3+40Dfz2LMRh4Ny7vzGta5xPA==}
@@ -622,7 +622,9 @@ snapshots:
 
   '@sindresorhus/merge-streams@2.3.0': {}
 
-  '@tenoxui/static@0.3.3': {}
+  '@tenoxui/static@0.3.4':
+    dependencies:
+      '@tenoxui/types': 0.1.2
 
   '@tenoxui/types@0.1.2': {}
 

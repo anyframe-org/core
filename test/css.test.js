@@ -97,7 +97,7 @@ describe('AnyFrame', () => {
       })
       const styles = ui.create(['bg-red'])
       expect(styles).toContain('@layer theme, base, components, utilities;')
-      expect(styles).toContain('body { background: #0000ff }')
+      expect(styles).toContain('  body {\n    background: #0000ff\n  }')
     })
 
     it('should generate styles without layer modifier', () => {
@@ -113,7 +113,7 @@ describe('AnyFrame', () => {
       })
       const styles = uiNoLayer.create([])
       expect(styles).not.toContain('@layer')
-      expect(styles).toContain('body { background: blue }')
+      expect(styles).toContain('body {\n  background: blue\n}')
     })
 
     it('should handle multiple layers with correct order', () => {
@@ -135,8 +135,10 @@ describe('AnyFrame', () => {
         apply: { body: 'bg-blue' }
       })
       const styles = ui.create(['bg-red'])
-      expect(styles).toContain('body { background: #0000ff }')
-      expect(styles).toContain('background: #ff0000')
+      expect(styles).toContain(`  body {
+    background: #0000ff
+  }`)
+      expect(styles).toContain('.bg-red { background: #ff0000 }')
     })
   })
 
