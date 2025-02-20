@@ -39,15 +39,17 @@
     "build:all": "pnpm build && pnpm build:types",
     "test": "saintest"
   },
-  "packageManager": "pnpm@10.4.0",
+  "dependencies": {
+    "@tenoxui/types": "^0.1.2"
+  },
+  "peerDependencies": {
+    "@tenoxui/static": ">=0.3.0"
+  },
   "devDependencies": {
     "@nousantx/someutils": "^0.6.1",
-    "@tenoxui/static": "^0.3.4",
     "saintest": "^0.2.0",
     "typescript": "^5.7.3",
     "vite": "^6.1.0"
   },
-  "dependencies": {
-    "@tenoxui/types": "^0.1.2"
-  }
+  "packageManager": "pnpm@10.4.0"
 }

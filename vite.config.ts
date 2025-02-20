@@ -11,7 +11,13 @@ export default defineConfig({
     },
     sourcemap: true,
     rollupOptions: {
-      output: { exports: 'named' }
+      external: ['@tenoxui/static'],
+      output: {
+        globals: {
+          '@tenoxui/static': '__tenoxui_static__'
+        },
+        exports: 'named'
+      }
     }
   }
 })
