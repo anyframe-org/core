@@ -1,6 +1,6 @@
 {
   "name": "@anyframe/core",
-  "version": "0.2.2",
+  "version": "0.3.1",
   "description": "Starter repository template for anyframe project",
   "author": "NOuSantx <nousantx@gmail.com>",
   "license": "MIT",
@@ -43,10 +43,11 @@
     "@tenoxui/types": "^0.1.2"
   },
   "peerDependencies": {
-    "@tenoxui/static": ">=0.3.0"
+    "@tenoxui/static": ">=0.5.1"
   },
   "devDependencies": {
     "@nousantx/someutils": "^0.6.1",
+    "@tenoxui/static": "^0.5.1",
     "saintest": "^0.2.0",
     "typescript": "^5.7.3",
     "vite": "^6.1.0"

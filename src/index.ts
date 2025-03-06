@@ -53,8 +53,8 @@ export class AnyFrame {
   private addTabs(str: string, size: number = 2, fixedTabs: boolean = false): string {
     return str
       .split('\n')
-      .filter((line) => line.trim() !== '')
-      .map((line) => `${' '.repeat(fixedTabs ? size : this.tabSize)}${line}`)
+      .filter(line => line.trim() !== '')
+      .map(line => `${' '.repeat(fixedTabs ? size : this.tabSize)}${line}`)
       .join('\n')
   }
 
@@ -91,14 +91,14 @@ export class AnyFrame {
   public removeLayer(layerName: string): this {
     if (layerName !== 'base' && layerName !== 'theme') {
       this.layers.delete(layerName)
-      this.layerOrder = this.layerOrder.filter((layer) => layer !== layerName)
+      this.layerOrder = this.layerOrder.filter(layer => layer !== layerName)
     }
     return this
   }
 
   public setLayerOrder(order: string[]): this {
     const existingLayers = Array.from(this.layers.keys())
-    const missingLayers = existingLayers.filter((layer) => !order.includes(layer))
+    const missingLayers = existingLayers.filter(layer => !order.includes(layer))
     this.layerOrder = [...order, ...missingLayers]
     return this
   }
@@ -111,7 +111,7 @@ export class AnyFrame {
       this.addLayer(layer)
     }
 
-    const ui = this.createTenoxUI(config).generateStylesheet()
+    const ui = this.createTenoxUI(config).generate()
     const currentStyles = this.layers.get(layer) || ''
 
     this.layers.set(layer, currentStyles + ui)
@@ -121,12 +121,12 @@ export class AnyFrame {
 
   public createStyles(finalUtilities: string = ''): string {
     const existingLayers = Array.from(this.layers.keys())
-    const orderedLayers = this.layerOrder.filter((layer) => existingLayers.includes(layer))
+    const orderedLayers = this.layerOrder.filter(layer => existingLayers.includes(layer))
 
     // If layering is enabled, wrap the layers declaration
     let styles = this.useLayer ? `@layer ${orderedLayers.join(', ')};\n` : ''
 
-    orderedLayers.forEach((layer) => {
+    orderedLayers.forEach(layer => {
       // If the layer's configuration is not empty, generate its styles
       if (
         (this as any)[`${layer}Config`] &&
@@ -159,7 +159,7 @@ export class AnyFrame {
 
     if (classNames) ui.processClassNames(classNames)
 
-    const stylesheet = this.createStyles(ui.generateStylesheet())
+    const stylesheet = this.createStyles(ui.generate())
     return stylesheet.replace(/\n$/, '')
   }
 }
