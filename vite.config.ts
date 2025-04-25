@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import path from 'node:path'
 
 export default defineConfig({
   build: {
@@ -7,15 +8,10 @@ export default defineConfig({
       name: '__anyframe_core__',
       entry: './src/index.ts',
       formats: ['es', 'iife', 'cjs', 'umd'],
-      fileName: (format) => `index.${format}${format !== 'cjs' ? '.js' : ''}`
+      fileName: (format) => `index.${format !== 'cjs' ? `${format}.js` : format}`
     },
-    sourcemap: true,
     rollupOptions: {
-      external: ['@tenoxui/static'],
       output: {
-        globals: {
-          '@tenoxui/static': '__tenoxui_static__'
-        },
         exports: 'named'
       }
     }
